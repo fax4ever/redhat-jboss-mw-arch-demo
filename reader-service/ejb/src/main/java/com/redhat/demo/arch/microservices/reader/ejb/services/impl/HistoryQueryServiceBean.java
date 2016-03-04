@@ -49,11 +49,11 @@ public class HistoryQueryServiceBean {
         }
         try {
             // HttpGet request = new HttpGet("http://" + loadBalancerAddress
-            // + "demo-history/rest/");
+            // + "history/rest/");
             URIBuilder builder = new URIBuilder();
             builder.setScheme("http").setHost(loadBalancerHost)
                     .setPort(loadBalancerPort)
-                    .setPath("/demo-history/rest/history")
+                    .setPath("/history/rest/history")
                     .setParameter("minutes", Integer.toString(minutes));
             HttpGet request = new HttpGet(builder.build());
 

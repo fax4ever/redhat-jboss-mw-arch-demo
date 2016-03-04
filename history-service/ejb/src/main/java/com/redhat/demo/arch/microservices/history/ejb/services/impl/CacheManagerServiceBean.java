@@ -71,12 +71,12 @@ public class CacheManagerServiceBean {
         ProtoSchemaBuilder protoSchemaBuilder = new ProtoSchemaBuilder();
         String generatedSchema;
         try {
-            // generate the 'demo-history.proto' schema file based on the
+            // generate the 'history.proto' schema file based on the
             // annotations on
             // Memo class and register it with the SerializationContext of the
             // client
             generatedSchema = protoSchemaBuilder
-                    .fileName("demo-history.proto")//
+                    .fileName("history.proto")//
                     .packageName(PayloadHistory.class.getPackage().getName())//
                     .addClass(PayloadHistory.class)//
                     .build(serCtx);

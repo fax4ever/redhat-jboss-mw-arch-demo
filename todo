@@ -1,0 +1,1 @@
+add httpclient-failover to services to handle multiple LoadBalancers

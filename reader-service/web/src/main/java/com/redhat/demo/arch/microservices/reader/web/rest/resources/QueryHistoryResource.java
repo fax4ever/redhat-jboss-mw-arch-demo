@@ -3,6 +3,8 @@
  */
 package com.redhat.demo.arch.microservices.reader.web.rest.resources;
 
+import java.io.IOException;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -39,7 +41,10 @@ public class QueryHistoryResource {
             LOG.error(errString);
             return errString;
         }
-        // historyQueryService.store(payload);
-        return "OK";
+        try {
+            return historyQueryService.getCountersByMinutes(minutes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -46,10 +46,10 @@ public class SenderResource {
             payload = "RedHat";
             break;
         case 1:
-            payload = "BP Oil";
+            payload = "JBoss";
             break;
         case 2:
-            payload = "Canary Warf";
+            payload = "Openshift";
             break;
         }
 

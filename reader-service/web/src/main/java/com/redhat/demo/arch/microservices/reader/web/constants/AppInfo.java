@@ -14,7 +14,7 @@ public enum AppInfo {
     NAME("READER Service"),
 
     /** The version. */
-    VERSION("2.0.0");
+    VERSION("1.0.0");
 
     /** The value. */
     private final String value;
