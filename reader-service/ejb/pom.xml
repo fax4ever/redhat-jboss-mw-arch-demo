@@ -17,7 +17,7 @@
     <parent>
         <artifactId>reader</artifactId>
         <groupId>com.redhat.demo.arch.microservices</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0.Final</version>
     </parent>
 
     <artifactId>reader-ejb</artifactId>

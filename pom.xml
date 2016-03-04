@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.redhat.demo.arch.microservices</groupId>
   <artifactId>mw-arch-parent-project</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0.Final</version>
   <packaging>pom</packaging>
   <properties>
-      <app.global.version>1.0.0</app.global.version>
+      <app.global.version>1.0.0.Final</app.global.version>
   </properties>
   <modules>
       <module>consumer-service</module>
