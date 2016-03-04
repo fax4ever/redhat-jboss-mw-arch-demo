@@ -1,0 +1,45 @@
+/*
+ *
+ */
+package com.redhat.demo.arch.microservices.reader.web.rest.resources;
+
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
+
+import org.slf4j.Logger;
+
+import com.redhat.demo.arch.microservices.reader.ejb.services.impl.HistoryQueryServiceBean;
+
+/**
+ * The Class CountersResource.
+ */
+@Path("query")
+@RequestScoped
+public class QueryHistoryResource {
+
+    /** The log. */
+    @Inject
+    private Logger LOG;
+
+    @EJB
+    private HistoryQueryServiceBean historyQueryService;
+
+    /**
+     * Simple test method.
+     */
+    @GET
+    @Path("")
+    public String queryHistory(@QueryParam("minutes") Integer minutes) {
+        if ((minutes != null) && (minutes < 0)) {
+            String errString = "negative value not accetped: " + minutes;
+            LOG.error(errString);
+            return errString;
+        }
+        // historyQueryService.store(payload);
+        return "OK";
+    }
+}
