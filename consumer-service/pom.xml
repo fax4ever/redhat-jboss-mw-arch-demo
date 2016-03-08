@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.redhat.demo.arch.microservices</groupId>
     <artifactId>consumer</artifactId>
-    <version>1.0.0.Final</version>
+    <version>1.0.1.Final</version>
     <packaging>pom</packaging>
 
     <url>http://jboss.org/jbossas</url>
@@ -64,6 +64,7 @@
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.compiler.source>1.7</maven.compiler.source>
+        <app.version>1.0.0</app.version>
     </properties>
 
     <dependencyManagement>

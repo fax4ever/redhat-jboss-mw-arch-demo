@@ -17,7 +17,7 @@
     <parent>
         <artifactId>history</artifactId>
         <groupId>com.redhat.demo.arch.microservices</groupId>
-        <version>1.0.0.Final</version>
+        <version>1.0.1.Final</version>
     </parent>
 
     <artifactId>history-ejb</artifactId>
@@ -107,6 +107,26 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.xsd</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>**/*.xml</exclude>
+                    <exclude>**/*.xsd</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-ejb-plugin</artifactId>
