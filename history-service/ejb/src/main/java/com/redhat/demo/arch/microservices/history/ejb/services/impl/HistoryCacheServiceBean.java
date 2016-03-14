@@ -80,7 +80,7 @@ public class HistoryCacheServiceBean {
             // List<Object[]> results = query.list();
 
             GregorianCalendar calendar = new GregorianCalendar();
-            calendar.add(Calendar.MINUTE, -1);
+            calendar.add(Calendar.MINUTE, minutes * -1);
             Query query = null;
             QueryBuilder<Query> qb = qf.from(PayloadHistory.class)//
                     .select(Expression.property("payload"),
