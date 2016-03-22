@@ -29,7 +29,7 @@ public class NotifierServiceBean {
     @Resource(mappedName = "java:/ConnectionFactory")
     private ConnectionFactory connectionFactory;
 
-    @Resource(mappedName = "java:/queue/BPMsDemoQueue")
+    @Resource(mappedName = "java:/queue/DemoQueue")
     private Queue queue;
 
     public void notifySync(String payload) throws IOException {

@@ -347,9 +347,9 @@
                                     HELLOWORLDMDBTopic
                                 </config-property>
                             </admin-object>
-                            <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/BPMsDemoQueue" use-java-context="true" pool-name="BPMsDemoQueue">
+                            <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/DemoQueue" use-java-context="true" pool-name="DemoQueue">
                                 <config-property name="PhysicalName">
-                                    BPMsDemoQueue
+                                    DemoQueue
                                 </config-property>
                             </admin-object>
                         </admin-objects>

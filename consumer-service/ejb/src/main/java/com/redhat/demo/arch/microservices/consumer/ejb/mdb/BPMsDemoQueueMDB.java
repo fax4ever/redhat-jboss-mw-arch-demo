@@ -16,7 +16,7 @@ import com.redhat.demo.arch.microservices.consumer.ejb.services.impl.CounterUpda
 
 @MessageDriven(name = "BPMsDemoQueueMDB", activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-        @ActivationConfigProperty(propertyName = "destination", propertyValue = "BPMsDemoQueue"),
+        @ActivationConfigProperty(propertyName = "destination", propertyValue = "DemoQueue"),
         @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
 public class BPMsDemoQueueMDB implements MessageListener {
 
