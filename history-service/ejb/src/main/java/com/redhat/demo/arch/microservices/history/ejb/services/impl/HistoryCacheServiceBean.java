@@ -54,7 +54,7 @@ public class HistoryCacheServiceBean {
      */
     @PostConstruct
     private void init() {
-        countersCache = cacheManagerService.getCache("BPDemo_HistoryCache");
+        countersCache = cacheManagerService.getCache("Demo_HistoryCache");
         qf = Search.getQueryFactory(countersCache);
     }
 

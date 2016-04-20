@@ -14,13 +14,13 @@ import javax.jms.TextMessage;
 
 import com.redhat.demo.arch.microservices.consumer.ejb.services.impl.CounterUpdaterServiceBean;
 
-@MessageDriven(name = "BPMsDemoQueueMDB", activationConfig = {
+@MessageDriven(name = "DemoQueueMDB", activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
         @ActivationConfigProperty(propertyName = "destination", propertyValue = "DemoQueue"),
         @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-public class BPMsDemoQueueMDB implements MessageListener {
+public class DemoQueueMDB implements MessageListener {
 
-    private final static Logger LOG = Logger.getLogger(BPMsDemoQueueMDB.class.toString());
+    private final static Logger LOG = Logger.getLogger(DemoQueueMDB.class.toString());
 
     @EJB
     private CounterUpdaterServiceBean counterUpdaterService;

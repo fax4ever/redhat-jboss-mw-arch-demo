@@ -86,6 +86,12 @@
             <artifactId>infinispan-client-hotrod</artifactId>
             <version>6.4.0.Final-redhat-4</version>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.ejb3</groupId>
+            <artifactId>jboss-ejb3-ext-api</artifactId>
+            <version>2.1.0.redhat-1</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>

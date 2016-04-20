@@ -39,7 +39,7 @@ public class CountersServiceBean {
     @PostConstruct
     private void init() {
 
-        countersCache = cacheManagerService.getCache("BPDemo_CountersCache");
+        countersCache = cacheManagerService.getCache("Demo_CountersCache");
     }
 
     public Map<String, Integer> getCounters() {

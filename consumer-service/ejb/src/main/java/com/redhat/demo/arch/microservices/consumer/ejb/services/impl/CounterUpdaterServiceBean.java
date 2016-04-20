@@ -37,7 +37,7 @@ public class CounterUpdaterServiceBean {
     @PostConstruct
     private void init() {
 
-        countersCache = cacheManagerService.getCache("BPDemo_CountersCache");
+        countersCache = cacheManagerService.getCache("Demo_CountersCache");
     }
 
     public void updateCounter(String key) {
