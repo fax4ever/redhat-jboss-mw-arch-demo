@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>auditor</artifactId>
+        <groupId>com.redhat.demo.arch.microservices</groupId>
+        <version>1.0.1.Final</version>
+    </parent>
+
+    <artifactId>auditor-ear</artifactId>
+    <packaging>ear</packaging>
+
+    <name>auditor - ear</name>
+
+    <url>http://jboss.org/jbossas</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
+    <dependencies>
+
+        <!-- Depend on the ejb module and war so that we can package them -->
+        <dependency>
+            <groupId>com.redhat.demo.arch.microservices</groupId>
+            <artifactId>auditor-common</artifactId>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.redhat.demo.arch.microservices</groupId>
+            <artifactId>auditor-web</artifactId>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.redhat.demo.arch.microservices</groupId>
+            <artifactId>auditor-ejb</artifactId>
+            <type>ejb</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.parent.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>${version.ear.plugin}</version>
+                <configuration>
+                    <!-- Tell Maven we are using Java EE 6 -->
+                    <version>6</version>
+                    <!-- Use Java EE ear libraries as needed. Java EE ear libraries are in easy way to package any libraries needed in the ear, and automatically have any modules (EJB-JARs and WARs) use them -->
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <ejbModule>
+                            <groupId>com.redhat.demo.arch.microservices</groupId>
+                            <artifactId>auditor-ejb</artifactId>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>com.redhat.demo.arch.microservices</groupId>
+                            <artifactId>auditor-web</artifactId>
+                            <contextRoot>/auditor</contextRoot>
+                        </webModule>
+                    </modules>
+                    <archive>
+                        <manifestEntries>
+                            <!-- HotRod client with Remote Query functionality -->
+                            <Dependencies>org.slf4j export,org.jboss.logmanager export</Dependencies>
+                        </manifestEntries>
+                    </archive>
+                    <fileNameMapping>no-version</fileNameMapping>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

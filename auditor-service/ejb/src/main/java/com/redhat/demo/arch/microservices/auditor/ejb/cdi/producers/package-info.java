@@ -1,0 +1,1 @@
+package com.redhat.demo.arch.microservices.auditor.ejb.cdi.producers;

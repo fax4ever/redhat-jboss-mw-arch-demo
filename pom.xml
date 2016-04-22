@@ -9,5 +9,6 @@
       <module>history-service</module>
       <module>reader-service</module>
       <module>sender-service</module>
+      <module>auditor-service</module>
   </modules>
 </project>
