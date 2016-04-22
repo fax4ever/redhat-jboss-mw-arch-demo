@@ -28,8 +28,7 @@ public class AppInfoServiceBean {
 
     @PostConstruct
     private void init() {
-        try (InputStream is = getClass()
-                .getResourceAsStream("/appinfo.properties")) {
+        try (InputStream is = getClass().getResourceAsStream("/appinfo.properties")) {
             Properties appInfo = new Properties();
             appInfo.load(is);
             appName = appInfo.getProperty("app.name");
