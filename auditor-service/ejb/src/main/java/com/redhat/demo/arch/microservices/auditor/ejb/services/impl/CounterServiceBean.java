@@ -33,7 +33,7 @@ public class CounterServiceBean {
 
         countersCache.put(key, value);
 
-        LOG.info("insert into cache key {} value {}", key, value);
+        LOG.debug("insert into cache key {} value {}", key, value);
 
     }
 
@@ -41,7 +41,7 @@ public class CounterServiceBean {
 
         countersCache.remove(key);
 
-        LOG.info("remove from cache value {}", key);
+        LOG.debug("remove from cache value {}", key);
 
     }
 

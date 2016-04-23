@@ -3,7 +3,7 @@
  */
 package com.redhat.demo.arch.microservices.auditor.ejb.services.impl;
 
-import com.redhat.demo.arch.microservices.auditor.common.dto.PayloadHistory;
+import com.redhat.demo.arch.microservices.auditor.ejb.listener.RemoteCacheListener;
 import org.infinispan.client.hotrod.RemoteCache;
 import org.slf4j.Logger;
 
@@ -22,28 +22,44 @@ import javax.inject.Inject;
 @Lock(LockType.READ)
 public class AuditCounterServiceBean {
 
+    public static final String DEMO_COUNTERS_CACHE = "Demo_CountersCache";
+
     @Inject
     private Logger LOG;
 
-    // true then audit is active
-    private boolean active = true;
+    @Inject
+    private RemoteCacheListener listener;
 
     @EJB
     private CacheManagerServiceBean cacheManagerService;
 
     private RemoteCache<String, Integer> countersCache;
 
+    private boolean activeListener = true;
+
     @PostConstruct
     private void init() {
-        countersCache = cacheManagerService.getCache("Demo_CountersCache");
+        countersCache = cacheManagerService.getCache(DEMO_COUNTERS_CACHE);
+        countersCache.addClientListener(listener);
+        listener.setCacheName(DEMO_COUNTERS_CACHE);
     }
 
     public void on() {
-        active = true;
+
+        if (activeListener) {
+            return;
+        }
+
+        countersCache.addClientListener(listener);
+        activeListener = true;
+
     }
 
     public void off() {
-        active = false;
+
+        countersCache.removeClientListener(listener);
+        activeListener = false;
+
     }
 
 }

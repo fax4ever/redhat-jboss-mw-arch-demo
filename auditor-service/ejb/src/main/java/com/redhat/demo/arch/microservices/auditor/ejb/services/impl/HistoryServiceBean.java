@@ -48,7 +48,7 @@ public class HistoryServiceBean {
 
         countersCache.put(payloadHistory, payloadHistory);
 
-        LOG.info("add to history cache {} time {}", payloadHistory.getPayload(), payloadHistory.getTimestamp());
+        LOG.debug("add to history cache {} time {}", payloadHistory.getPayload(), payloadHistory.getTimestamp());
 
     }
 
@@ -70,7 +70,7 @@ public class HistoryServiceBean {
 
             countersCache.remove(payloadHistory);
 
-            LOG.info("remove from history cache {} time {}", payloadHistory.getPayload(), payloadHistory.getTimestamp());
+            LOG.debug("remove from history cache {} time {}", payloadHistory.getPayload(), payloadHistory.getTimestamp());
         }
 
     }

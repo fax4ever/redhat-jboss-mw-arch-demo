@@ -5,6 +5,9 @@ import org.infinispan.client.hotrod.event.ClientCacheEntryCreatedEvent;
 import org.infinispan.client.hotrod.event.ClientCacheEntryExpiredEvent;
 import org.infinispan.client.hotrod.event.ClientCacheEntryModifiedEvent;
 import org.infinispan.client.hotrod.event.ClientCacheEntryRemovedEvent;
+import org.slf4j.Logger;
+
+import javax.inject.Inject;
 
 /**
  * @author Fabio Massimo Ercoli
@@ -12,25 +15,35 @@ import org.infinispan.client.hotrod.event.ClientCacheEntryRemovedEvent;
  *         on 23/04/16
  */
 @ClientListener
-public class HistoryListener {
+public class RemoteCacheListener {
+
+    @Inject
+    private Logger LOG;
+
+    private String cacheName;
 
     @ClientCacheEntryCreated
     public void handleCreatedEvent(ClientCacheEntryCreatedEvent e) {
-        System.out.println(e);
+        LOG.info("New entry created! Key: {}. Version: {}. Cache: {}", e.getKey(), e.getVersion(), cacheName);
     }
 
     @ClientCacheEntryModified
     public void handleModifiedEvent(ClientCacheEntryModifiedEvent e) {
-        System.out.println(e);
+        LOG.info("Entry updated! Key: {}. Version: {}. Cache: {}", e.getKey(), e.getVersion(), cacheName);
     }
 
     @ClientCacheEntryExpired
     public void handleExpiredEvent(ClientCacheEntryExpiredEvent e) {
-        System.out.println(e);
+        LOG.info("Entry expired! Key: {}. Cache: {}", e.getKey(), cacheName);
     }
 
     @ClientCacheEntryRemoved
     public void handleRemovedEvent(ClientCacheEntryRemovedEvent e) {
-        System.out.println(e);
+        LOG.info("Entry evicted! Key: {}. Cache: {}", e.getKey(), cacheName);
     }
+
+    public void setCacheName(String cacheName) {
+        this.cacheName = cacheName;
+    }
+
 }
