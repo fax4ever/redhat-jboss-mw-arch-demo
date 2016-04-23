@@ -30,7 +30,6 @@
         <dependency>
             <groupId>com.redhat.demo.arch.microservices</groupId>
             <artifactId>auditor-common</artifactId>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.redhat.demo.arch.microservices</groupId>

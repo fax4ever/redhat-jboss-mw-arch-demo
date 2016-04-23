@@ -74,7 +74,6 @@
                 <groupId>com.redhat.demo.arch.microservices</groupId>
                 <artifactId>auditor-common</artifactId>
                 <version>${project.version}</version>
-                <type>jar</type>
             </dependency>
 
             <!-- Define the version of the EJB jar so that we don't need
