@@ -4,6 +4,7 @@
 package com.redhat.demo.arch.microservices.auditor.ejb.services.impl;
 
 import com.redhat.demo.arch.microservices.auditor.common.dto.PayloadHistory;
+import com.redhat.demo.arch.microservices.auditor.ejb.listener.CounterListener;
 import org.infinispan.client.hotrod.RemoteCache;
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.marshall.ProtoStreamMarshaller;
@@ -29,6 +30,9 @@ public class CacheManagerServiceBean {
 
     @Inject
     private Logger LOG;
+
+    @Inject
+    private CounterListener listener;
 
     private RemoteCacheManager remoteCacheManager;
 
@@ -116,6 +120,8 @@ public class CacheManagerServiceBean {
 
         RemoteCache<K, V> returnCache = remoteCacheManager.getCache(cacheName,
                 true);
+
+        returnCache.addClientListener(listener);
 
         LOG.info("RemoteCache {} initializiation completed.", cacheName);
 
