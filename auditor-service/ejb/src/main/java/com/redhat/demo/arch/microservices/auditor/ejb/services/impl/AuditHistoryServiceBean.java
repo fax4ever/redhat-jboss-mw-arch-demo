@@ -5,11 +5,17 @@ package com.redhat.demo.arch.microservices.auditor.ejb.services.impl;
 
 import com.redhat.demo.arch.microservices.auditor.common.dto.PayloadHistory;
 import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.Search;
+import org.infinispan.query.dsl.Expression;
+import org.infinispan.query.dsl.Query;
+import org.infinispan.query.dsl.QueryBuilder;
+import org.infinispan.query.dsl.QueryFactory;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.*;
 import javax.inject.Inject;
+import java.util.*;
 
 /**
  * @author Fabio Massimo Ercoli
@@ -20,19 +26,30 @@ import javax.inject.Inject;
 @Startup
 @LocalBean
 @Lock(LockType.READ)
-public class CountersServiceBean {
+public class AuditHistoryServiceBean {
 
     @Inject
     private Logger LOG;
 
+    // true then audit is active
+    private boolean active = true;
+
     @EJB
     private CacheManagerServiceBean cacheManagerService;
 
-    private RemoteCache<String, Integer> countersCache;
+    private RemoteCache<PayloadHistory, PayloadHistory> countersCache;
 
     @PostConstruct
     private void init() {
-        countersCache = cacheManagerService.getCache("Demo_CountersCache");
+        countersCache = cacheManagerService.getCache("Demo_HistoryCache");
+    }
+
+    public void on() {
+        active = true;
+    }
+
+    public void off() {
+        active = false;
     }
 
 }

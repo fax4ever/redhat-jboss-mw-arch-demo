@@ -1,5 +1,7 @@
 package com.redhat.demo.arch.microservices.auditor.web.rest.resources;
 
+import com.redhat.demo.arch.microservices.auditor.ejb.services.impl.AuditCounterServiceBean;
+import com.redhat.demo.arch.microservices.auditor.ejb.services.impl.AuditHistoryServiceBean;
 import org.slf4j.Logger;
 
 import javax.enterprise.context.RequestScoped;
@@ -20,17 +22,33 @@ public class AuditorResource {
     @Inject
     private Logger LOG;
 
+    @Inject
+    private AuditCounterServiceBean counterService;
+
+    @Inject
+    private AuditHistoryServiceBean historyService;
+
     @POST
     public void on() {
 
-        LOG.info("ON");
+        LOG.debug("activating audit service");
+
+        counterService.on();
+        historyService.on();
+
+        LOG.info("audit service is active");
 
     }
 
     @DELETE
     public void off() {
 
-        LOG.info("OFF");
+        LOG.debug("turing off audit service");
+
+        counterService.off();
+        historyService.off();
+
+        LOG.info("audit service is off");
 
     }
 
